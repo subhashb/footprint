@@ -17,8 +17,10 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency  "growl", "~> 1.0.3"
   gem.add_development_dependency  "rb-fsevent", "~> 0.9.1"
   gem.add_development_dependency  "factory_girl_rails"
+  gem.add_development_dependency  "sqlite3"
   
-  gem.add_runtime_dependency      "mongoid", "~> 3.0.0"
+  gem.add_dependency              "mongoid", "~> 3.0.0"
+  gem.add_dependency              "activerecord", "~> 3.2.0"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

@@ -1,7 +1,7 @@
 require "footprint/version"
 
+require "active_support/inflector"
+
 module Footprint
-  def self.version_string
-    "Footprint version #{Footprint::VERSION}"
-  end
+  
 end
