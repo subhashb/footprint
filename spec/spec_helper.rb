@@ -14,6 +14,9 @@ Dir[ File.join(MODELS, "*.rb") ].sort.each do |file|
   autoload name.camelize.to_sym, name
 end
 
+# Load support files
+Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
+
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
   config.run_all_when_everything_filtered = true
@@ -28,5 +31,6 @@ RSpec.configure do |config|
   #Setup SQLite3 DB and run artifacts
   Dir.mkdir("db") unless File.directory?("db")
   ActiveRecord::Base.establish_connection adapter: "sqlite3", database: "db/fpdb"
+  # TODO: Drop database before migration
   ActiveRecord::Migrator.migrate(MIGRATIONS)
 end

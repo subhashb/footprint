@@ -1,6 +1,6 @@
 # Footprint
 
-TODO: Write a gem description
+Big Data Versioning for those seriously Big Apps
 
 ## Installation
 
@@ -19,6 +19,10 @@ Or install it yourself as:
 ## Usage
 
 TODO: Write usage instructions here
+
+## ToDo
+
+* Auto-generate Documents without having to run a generator
 
 ## Contributing
 

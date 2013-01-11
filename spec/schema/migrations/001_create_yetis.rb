@@ -5,6 +5,7 @@ class CreateYetis < ActiveRecord::Migration
       t.string        :region
       t.integer       :height
       t.integer       :weight
+      t.string        :strength
       t.timestamps
     end
   end

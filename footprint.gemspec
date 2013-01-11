@@ -16,7 +16,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency  "guard-rspec"
   gem.add_development_dependency  "growl", "~> 1.0.3"
   gem.add_development_dependency  "rb-fsevent", "~> 0.9.1"
-  gem.add_development_dependency  "factory_girl_rails"
+  gem.add_development_dependency  "factory_girl"
   gem.add_development_dependency  "sqlite3"
   
   gem.add_dependency              "mongoid", "~> 3.0.0"
