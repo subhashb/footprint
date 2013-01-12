@@ -1,3 +1,12 @@
+#Required for ammeter - start
+require 'rails/all'
+
+module Footprint
+  class Application < ::Rails::Application
+  end
+end
+#Required for ammeter - end
+
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), "..", "lib"))
 
@@ -7,6 +16,7 @@ $LOAD_PATH.unshift(MODELS)
 
 require 'footprint'
 require 'support/active_record'
+require 'ammeter/init'
 
 # Autoload every model for the test suite that sits in spec/app/models.
 Dir[ File.join(MODELS, "*.rb") ].sort.each do |file|
