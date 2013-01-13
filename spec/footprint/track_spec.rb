@@ -34,7 +34,25 @@ describe Footprint::Model do
       context "will leave an impression" do
         it "when born" do
           expect { @yeti.save }.to change{YetiFootprint.count}.by(1)
-        end        
+        end
+        
+        it "when growing" do
+          @yeti.save
+          @yeti.name = @yeti.name + "Changed"
+          expect { @yeti.save }.to change{YetiFootprint.count}.by(1)
+        end
+        
+        it "when dead" do
+          @yeti.save
+          expect { @yeti.destroy }.to change{YetiFootprint.count}.by(1)
+        end
+      end
+      
+      context "will not leave an impression" do
+        it "if there is no growth" do
+          @yeti.save
+          expect { @yeti.save }.to_not change{YetiFootprint.count}
+        end
       end
     end
   end
