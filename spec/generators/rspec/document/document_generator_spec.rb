@@ -9,8 +9,8 @@ describe Footprint::Generators::DocumentGenerator do
   
   describe "with valid ActiveRecord model" do
     describe "generates a document" do
-      run_generator %w(Yeti)
-      subject { file('app/models/yeti_footprint.rb') }
+      # run_generator %w(Yeti)
+      # subject { file('app/models/yeti_footprint.rb') }
       #it { should exist }
       # TODO Fix problem of 'scope/rails' not found in spec
       it "needs a fix problem 'script/rails' not found"

@@ -5,7 +5,10 @@ class CreateLeopards < ActiveRecord::Migration
       t.string      :region
       t.integer     :height
       t.integer     :weight
-      t.integer     :length
+      t.integer     :strength
+      t.integer     :speed
+      t.integer     :aggression
+      t.string      :notes
       t.timestamps
     end
   end

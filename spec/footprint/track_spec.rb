@@ -1,16 +1,47 @@
-#Is a set of Impressions (Versions)
 require "spec_helper"
 
 describe Footprint::Model do
-  context "with tracking enabled" do
-    it "says yes to leaving_a_track?" do
-      Yeti.new.leaving_a_track.should be_true
+  before(:each) do
+    @yeti = FactoryGirl.build(:yeti)
+  end
+
+  context "during its lifetime" do
+    it "can be conceived" do
+      expect( @yeti ).to be_valid
+    end
+    
+    it "can be born" do
+      expect{ @yeti.save }.to change{Yeti.count}.by(1)
+    end
+    
+    it "can grow" do
+      @yeti.save
+      expect{ @yeti.update_attributes(:height => 100) }.not_to change{Yeti.count}
+    end
+    
+    it "can die" do
+      @yeti.save
+      expect { @yeti.destroy }.to change{Yeti.count}.by(-1)
     end
   end
   
-  context "with tracking disabled" do
-    it "does not respond to leaving_a_track?" do
-      Leopard.new.respond_to?(:leaving_a_track).should be_false
+  context "with tracking enabled" do
+    it "can be monitored" do
+      expect( Yeti.new ).to be_leaving_a_track
+    end
+    
+    context "while alive" do
+      context "will leave an impression" do
+        it "when born" do
+          expect { @yeti.save }.to change{YetiFootprint.count}.by(1)
+        end        
+      end
+    end
+  end
+  
+  context "with no tracking" do
+    it "does not respond to leaving_a_track" do
+      expect(Leopard.new).to_not respond_to(:leaving_a_track)
     end
   end
 end
