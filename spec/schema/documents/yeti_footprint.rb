@@ -13,4 +13,7 @@ class YetiFootprint
   field :notes, type: String
   field :created_at, type: Time
   field :updated_at, type: Time
+  field :phase, type: String
+  field :parent_id, type: Integer
+  field :parent_type, type: String
 end

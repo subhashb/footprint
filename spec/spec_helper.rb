@@ -59,6 +59,7 @@ end
 
 # Set the database that the spec suite connects to.
 Mongoid.configure do |config|
+  config.allow_dynamic_fields = false
   config.connect_to(database_id, consistency: :strong)
 end
 # Mongoid Configuration - end
