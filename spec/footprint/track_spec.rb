@@ -48,6 +48,16 @@ describe Footprint::Model do
         end
       end
       
+      context "when saved multiple times" do
+        it "will store multiple impressions" do
+          expect { 
+            @yeti.save 
+            @yeti.name = @yeti.name + "Changed"
+            @yeti.save
+          }.to change{YetiFootprint.count}.by(2)
+        end
+      end
+      
       context "will not leave an impression" do
         it "if there is no growth" do
           @yeti.save

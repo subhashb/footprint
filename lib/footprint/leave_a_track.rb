@@ -34,25 +34,16 @@ module Footprint
       private 
       
       def impression_of_create
-        impressions_class.create attributes_for_impression.merge(mandatory_attributes).merge(:phase => "create")
+        impressions_class.leave self, "create"
       end
       
       def impression_of_update
-        impressions_class.create attributes_for_impression.merge(mandatory_attributes).merge(:phase => "update") if changed?
+        impressions_class.leave(self, "update") if changed?
       end
       
       def impression_of_destroy
-        impressions_class.create attributes_for_impression.merge(mandatory_attributes).merge(:phase => "destroy")
-      end
-      
-      def mandatory_attributes
-        Hash.new.merge(:parent_id => self.id, :parent_type => self.name)
-      end
-      
-      def attributes_for_impression
-        self.attributes.except(:id)
+        impressions_class.leave self, "destroy"
       end
     end
-    
   end
 end

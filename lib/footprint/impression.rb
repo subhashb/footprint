@@ -1,5 +1,31 @@
+require 'mongoid'
+
 module Footprint
-  module Impression
+  class Impression
+    include Mongoid::Document
     
+    def self.leave(model, phase)
+      self.create attributes_for_impression(model).merge(mandatory_attributes(model)).merge(:phase => phase)
+    end
+    
+    def as_parent
+      parent = Object.const_get(parent_type).new (self.attributes).except("_id", "_type", "parent_id", "parent_type", "phase", "created_at", "updated_at")
+      
+      #id,created_at and updated_at  is attr-protected, so no mass-assignment
+      parent.id = self.parent_id
+      parent.created_at = self.created_at
+      parent.updated_at = self.updated_at
+      parent
+    end
+    
+    private
+    
+    def self.mandatory_attributes(model)
+      Hash.new.merge(:parent_id => model.id, :parent_type => model.class.name)
+    end
+    
+    def self.attributes_for_impression(model)
+      model.attributes.except(:id)
+    end
   end
 end

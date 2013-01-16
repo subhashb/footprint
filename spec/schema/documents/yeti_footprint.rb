@@ -1,4 +1,4 @@
-class YetiFootprint
+class YetiFootprint < Footprint::Impression
   include Mongoid::Document
   store_in collection: "yetis"
   field :id, type: Integer

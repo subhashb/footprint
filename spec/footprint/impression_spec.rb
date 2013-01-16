@@ -23,7 +23,7 @@ describe Footprint::Impression do
     end
     
     it "like parent_type" do
-      expect(@yeti.impressions.first.parent_type).to eq(@yeti.name)
+      expect(@yeti.impressions.first.parent_type).to eq(@yeti.class.name)
     end
     
     context "like phase" do
@@ -41,6 +41,20 @@ describe Footprint::Impression do
         @yeti.destroy
         expect(@yeti.impressions.last.phase).to eq("destroy")
       end
+    end
+  end
+  
+  context "returns" do
+    it "an impression in general cases" do
+      expect(@yeti.impressions.first.class).to be_instance_of(YetiFootprint.class)
+    end
+    
+    it "the parent type when asked" do
+      expect(@yeti.impressions.first.as_parent).to be_instance_of(Yeti)
+    end
+    
+    it "returns its parent when asked" do
+      expect(@yeti.impressions.first.as_parent.id).to eq(@yeti.impressions.first.parent_id)
     end
   end
 end

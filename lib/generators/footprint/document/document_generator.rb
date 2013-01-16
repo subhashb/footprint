@@ -7,8 +7,9 @@ module Footprint
     
       def run_mongoid_generator
         begin
+          #TODO Provide option to prevent generation of test unit files (--skip-test-unit)
           attributes = Object.const_get(model_name).columns_hash.except("id").values.collect { |c| c.name + ":" + type_class(c.sql_type) }.join(" ") + " phase:string parent_id:integer parent_type:string"
-          generate "mongoid:model", "#{model_name.camelize}Footprint #{attributes} --collection=#{model_name.downcase.pluralize}"
+          generate "mongoid:model", "#{model_name.camelize}Footprint #{attributes} --parent Footprint::Impression --collection=#{model_name.downcase.pluralize}"
         rescue Exception => e
           Logger.new(STDOUT).error("ActiveRecord model \"#{model_name.to_s}\" was not found")
         end
