@@ -8,9 +8,10 @@ Gem::Specification.new do |gem|
   gem.version       = Footprint::VERSION
   gem.authors       = ["Subhash Bhushan"]
   gem.email         = ["subhash.bhushan@stratalabs.in"]
-  gem.description   = %q{Big Data Versioning for those seriously Big Apps}
-  gem.summary       = %q{Big Data Versioning for those seriously Big Apps}
+  gem.description   = %q{Big Data Versioning for those seriously Big Applications}
+  gem.summary       = %q{Big Data Versioning for those seriously Big Applications}
   gem.homepage      = ""
+  gem.license       = "MIT"
   
   gem.add_development_dependency  "rspec", "~> 2.12"
   gem.add_development_dependency  "guard-rspec"

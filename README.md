@@ -17,7 +17,7 @@ Footprint integrates seamlessly into your ActiveRecord-driven Rails Application,
 Add Footprint to your Gemfile:
     
 ```ruby
-gem "footprint", "1.0.0.beta1"
+gem "footprint", "1.0.0.rc1"
 ```
 
 Generate mongoid.yml if you don't have one in your project already
