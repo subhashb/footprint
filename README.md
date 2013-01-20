@@ -107,6 +107,16 @@ For a complete list of sorting options: [Mongoid Sorting](http://mongoid.org/en/
 * [will_paginate_mongoid](https://github.com/lucasas/will_paginate_mongoid)
 * [kaminari](https://github.com/amatsuda/kaminari) ([Example](http://code.dblock.org/mongoid-202-dropped-pagination-kaminari))
 
+## Enabling/Disabling Footprint globally
+
+Footprint is enabled by default. If you want to disable it globally, just include the following snippet in an environment file (like config/environments/development.rb or config/environments/test.rb)
+
+```ruby
+config.after_initialize do
+  Footprint.enabled = false
+end
+```
+
 ## Setting up MongoDB
 
 Getting a MongoDB instance up and running is pretty simple.
