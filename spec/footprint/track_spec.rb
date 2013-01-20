@@ -25,6 +25,28 @@ describe Footprint::Model do
     end
   end
   
+  context "when globally" do
+    context "enabled" do
+      it "leaves a track" do
+        expect { @yeti.save }.to change{YetiFootprint.count}.by(1)
+      end
+    end
+    
+    context "disabled" do
+      before(:all) do
+        Footprint.enabled = false
+      end
+    
+      it "does not leave a track" do
+        expect { @yeti.save }.to_not change{YetiFootprint.count}.by(1)
+      end
+      
+      after(:all) do
+        Footprint.enabled = true
+      end
+    end
+  end
+  
   context "with tracking enabled" do
     it "can be monitored" do
       expect( Yeti.new ).to be_leaving_a_track

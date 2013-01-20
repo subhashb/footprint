@@ -34,15 +34,25 @@ module Footprint
       private 
       
       def impression_of_create
-        impressions_class.leave self, "create"
+        if tracking?
+          impressions_class.leave self, "create"
+        end
       end
       
       def impression_of_update
-        impressions_class.leave(self, "update") if changed?
+        if tracking? and changed?
+          impressions_class.leave(self, "update")
+        end
       end
       
       def impression_of_destroy
-        impressions_class.leave self, "destroy"
+        if tracking?
+          impressions_class.leave self, "destroy"
+        end
+      end
+      
+      def tracking?
+        Footprint.enabled?
       end
     end
   end
