@@ -8,6 +8,8 @@ require "generators/footprint/document/document_generator"
 require "active_support/inflector"
 
 module Footprint
+  require "footprint/railtie" if defined?(Rails)
+  
   def self.enabled=(value)
     Footprint.config.enabled = value
   end

@@ -31,6 +31,10 @@ module Footprint
         impressions_class.where(parent_id: self.id)
       end
       
+      def first_step
+        impressions_class.leave self, "load"
+      end
+      
       private 
       
       def impression_of_create

@@ -94,4 +94,15 @@ describe Footprint::Model do
       expect(Leopard.new).to_not respond_to(:leaving_a_track)
     end
   end
+  
+  context "can be loaded" do
+    before(:all) do
+      @yetis = FactoryGirl.create_list(:yeti, 25)
+    end
+    it "with phase as load" do
+      @yetis.each do |yeti|
+        expect { yeti.first_step }.to change{YetiFootprint.count}.by(1)
+      end
+    end
+  end
 end

@@ -26,7 +26,7 @@ Generate mongoid.yml if you don't have one in your project already
 $ rails g mongoid:config
 ```
 
-Modify your config/application.rb to use ActiveRecord generators by default
+Modify your config/application.rb to still use ActiveRecord generators by default and to enforce
 
 ```ruby
 config.generators do |g| 
@@ -117,6 +117,48 @@ config.after_initialize do
 end
 ```
 
+## Loading Existing Data
+
+You can create impressions for existing data of a model, by running rake task `load` on it:
+
+```ruby
+rake footprint:load[User] 
+```
+
+If you are using zsh, you will have to escape braces:
+
+```ruby
+rake footprint:load\[User\] 
+```
+
+or
+
+```ruby
+rake "footprint:load[User]" 
+```
+
+## Extract Impressions
+
+You can extract all impressions of a model in a csv, by running rake task `extract` on it:
+
+```ruby
+rake footprint:extract[User] 
+```
+
+If you are using zsh, you will have to escape braces:
+
+```ruby
+rake footprint:extract\[User\] 
+```
+
+or
+
+```ruby
+rake "footprint:extract[User]"
+```
+
+The extracted file is placed in `tmp` subfolder of your rails application.
+
 ## Setting up MongoDB
 
 Getting a MongoDB instance up and running is pretty simple.
@@ -126,7 +168,7 @@ The tutorial [Getting Started with MongoDB Development](http://docs.mongodb.org/
 
 ## Known Issues
 
-* If you get a message that "ActiveRecord model 'Project' was not found" while generating a document, do `rake db:migrate` and then try generating the document again.
+* If you get a message that "ActiveRecord model '<model_name>' was not found" while generating a document, do `rake db:migrate` and then try generating the document again.
 
 ## Contributing
 
