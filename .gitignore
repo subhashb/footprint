@@ -18,3 +18,4 @@ tmp
 *.todo
 db/*
 .DS_Store
+.rvmrc
