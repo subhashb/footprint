@@ -1,5 +1,7 @@
 # Footprint
 
+[![Build Status](https://travis-ci.org/subhashb/footprint.png)](https://travis-ci.org/subhashb/footprint)
+
 **Footprint** is a **MongoDB-backed** versioning system for those **Big Applications** which have a need for storing
 
 * Huge amounts of Version data for auditing purposes
