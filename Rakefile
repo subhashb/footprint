@@ -1,6 +1,10 @@
 require "bundler/gem_tasks"
 require 'active_record'
 require 'logger'
+require 'rspec/core/rake_task'
+
+task :default => :spec
+RSpec::Core::RakeTask.new
 
 namespace :db do
   desc "Migrate the database through scripts in spec/schema/migrations"
