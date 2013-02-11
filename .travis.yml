@@ -5,3 +5,4 @@ services:
   - mongodb
 script:
   - bundle exec rake db:prepare
+  - bundle exec rake
