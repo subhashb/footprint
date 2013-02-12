@@ -19,6 +19,9 @@ module Footprint
         class_attribute :leaving_a_track
         self.leaving_a_track = true
         
+        class_attribute :leave_full_impression
+        self.leave_full_impression = false
+        
         after_create  :impression_of_create
         after_update  :impression_of_update
         after_destroy :impression_of_destroy
@@ -45,7 +48,7 @@ module Footprint
       
       def impression_of_update
         if tracking? and changed?
-          impressions_class.leave(self, "update")
+          impressions_class.leave self, "update"
         end
       end
       

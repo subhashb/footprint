@@ -44,6 +44,20 @@ describe Footprint::Impression do
         end      
       end
     end
+    
+    context "records only changed criteria" do
+      before(:each) do
+        @huge_yeti = FactoryGirl.create(:male_huge_yeti)
+        @huge_yeti.mass = 9
+        @huge_yeti.save
+      end
+      it "like mass" do
+        expect(@huge_yeti.impressions.last.mass).to eq(9)
+      end
+      it "but not height" do
+        expect(@huge_yeti.impressions.last.height).to be_nil
+      end
+    end
   
     context "returns" do
       it "an impression in general cases" do

@@ -25,7 +25,7 @@ describe Footprint::Model do
     end
   end
   
-  context "when globally" do
+  context "when global tracking" do
     context "enabled" do
       it "leaves a track" do
         expect { @yeti.save }.to change{YetiFootprint.count}.by(1)

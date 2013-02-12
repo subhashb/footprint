@@ -5,7 +5,12 @@ module Footprint
     include Mongoid::Document
     
     def self.leave(model, phase)
-      self.create attributes_for_impression(model).merge(mandatory_attributes(model)).merge(:phase => phase)
+      if !model.leave_full_impression? and phase == "update"
+        puts changed_attributes_for_impression(model).merge(mandatory_attributes(model)).merge(:phase => phase).to_s
+        self.create changed_attributes_for_impression(model).merge(mandatory_attributes(model)).merge(:phase => phase)
+      else
+        self.create attributes_for_impression(model).merge(mandatory_attributes(model)).merge(:phase => phase)
+      end
     end
     
     def as_parent
@@ -26,6 +31,10 @@ module Footprint
     
     def self.attributes_for_impression(model)
       model.attributes.except(:id)
+    end
+    
+    def self.changed_attributes_for_impression(model)
+      model.attributes.select { |k,v| model.changed.include?(k) }
     end
   end
 end
