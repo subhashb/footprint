@@ -52,4 +52,27 @@ FactoryGirl.define do
     factory :male_tameable_yeti, traits: [:male, :tameable, name: "Beethoven"]
     factory :female_huge_yeti, traits: [:female, :huge, name: "Hidimbi"]
   end
+  
+  factory :chimp do
+    sequence(:name) { |n| "Chimp#{n}" }
+    notes           "Chimps to the recuee.."
+    region          "Northern India"
+    aggression      7
+    height          135
+    weight          50
+    speed           4
+    strength        5
+    
+    trait :male do
+      weight        70
+      aggression    8
+    end
+    trait :female do
+      weight        45
+      aggression    4
+    end
+    
+    factory :male_chimp, traits: [:male]
+    factory :female_chimp, traits: [:female]
+  end
 end

@@ -45,7 +45,7 @@ describe Footprint::Impression do
       end
     end
     
-    context "records only changed criteria" do
+    context "records only changed attributes by default" do
       before(:each) do
         @huge_yeti = FactoryGirl.create(:male_huge_yeti)
         @huge_yeti.mass = 9
@@ -56,6 +56,20 @@ describe Footprint::Impression do
       end
       it "but not height" do
         expect(@huge_yeti.impressions.last.height).to be_nil
+      end
+    end
+    
+    context "records all attributes when specified" do
+      before(:each) do
+        @mail_chimp = FactoryGirl.create(:male_chimp)
+        @mail_chimp.aggression = 10
+        @mail_chimp.save
+      end
+      it "like aggression" do
+        expect(@mail_chimp.impressions.last.aggression).to eq(10)
+      end
+      it "including an unchanged attribute like weight" do
+        expect(@mail_chimp.impressions.last.weight).to eq(70)
       end
     end
   

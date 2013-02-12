@@ -6,8 +6,12 @@ module Footprint
     end
     
     module ClassMethods
-      
-      def leave_a_track
+      # Declare this in your model to track every create, update, and destroy.  Each version of
+      # the model is available as its `impressions`
+      #
+      # Options:
+      # :impression_type      delta or full (optional; defaults to delta).
+      def leave_a_track(options = {})
         send :include, InstanceMethods
         
         class_attribute :impressions_association_name
@@ -19,8 +23,11 @@ module Footprint
         class_attribute :leaving_a_track
         self.leaving_a_track = true
         
+        class_attribute :footprint_options
+        self.footprint_options = options.dup
+        
         class_attribute :leave_full_impression
-        self.leave_full_impression = false
+        self.leave_full_impression = footprint_options[:impression_type] == "full" ? true : false
         
         after_create  :impression_of_create
         after_update  :impression_of_update

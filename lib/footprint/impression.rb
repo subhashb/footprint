@@ -5,6 +5,7 @@ module Footprint
     include Mongoid::Document
     
     def self.leave(model, phase)
+      #FIXME Find better way of checking for "update" event
       if !model.leave_full_impression? and phase == "update"
         puts changed_attributes_for_impression(model).merge(mandatory_attributes(model)).merge(:phase => phase).to_s
         self.create changed_attributes_for_impression(model).merge(mandatory_attributes(model)).merge(:phase => phase)

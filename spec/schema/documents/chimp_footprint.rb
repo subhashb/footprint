@@ -1,6 +1,6 @@
-class LeopardFootprint < Footprint::Impression
+class ChimpFootprint < Footprint::Impression
   include Mongoid::Document
-  store_in collection: "leopards"
+  store_in collection: "chimps"
   field :id, type: Integer
   field :name, type: String
   field :region, type: String
