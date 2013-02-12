@@ -16,3 +16,6 @@
         rake footprint:extract[User]
         
 * Store changes alone, during updates
+
+* Option at model level to choose full record storage
+        leave_a_track :impression_type => 'full'
