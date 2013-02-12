@@ -15,4 +15,4 @@
         rake footprint:load[User] 
         rake footprint:extract[User]
         
-        
+* Store changes alone, during updates
