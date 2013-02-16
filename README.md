@@ -1,4 +1,4 @@
-# Footprint [![Build Status](https://travis-ci.org/subhashb/footprint.png)](https://travis-ci.org/subhashb/footprint) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/subhashb/footprint)
+# Footprint [![Gem Version](https://badge.fury.io/rb/footprint.png)](http://badge.fury.io/rb/footprint)[![Build Status](https://travis-ci.org/subhashb/footprint.png)](https://travis-ci.org/subhashb/footprint) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/subhashb/footprint)
 
 **Footprint** is a **MongoDB-backed** versioning system for those **Big Applications** which have a need for storing
 
